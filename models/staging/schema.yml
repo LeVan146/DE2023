@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: vande2023 
+    schema: vande2023
+  
+    tables:
+      - name: green_tripdata
+      - name: yellow_tripdata
