@@ -1,0 +1,56 @@
+###
+### A complete description of a Prefect Deployment for flow 'from_web_to_GCS'
+###
+name: from_web_to_gcs
+description: The main ETL function
+version: b63fac7cdd17f4799bb67454f588e99e
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {
+"urls": [
+    "https://cdn.rebrickable.com/media/downloads/inventory_sets.csv.gz?1682147607.450634", 
+    "https://cdn.rebrickable.com/media/downloads/sets.csv.gz?1682147600.4386284", 
+    "https://cdn.rebrickable.com/media/downloads/themes.csv.gz?1683011566.062824"
+],
+"data_names": [
+    "inventory_sets", 
+    "sets", 
+    "themes"
+]
+}
+schedule: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: from_web_to_GCS
+manifest_path: null
+storage: null
+path: /Users/lap02105/workking_space/DE_Zoomcamp_2023/project
+entrypoint: source/upload_to_gcs.py:from_web_to_gcs
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    urls:
+      title: urls
+      position: 0
+    data_names:
+      title: data_names
+      position: 1
+  required:
+  - urls
+  - data_names
+  definitions: null

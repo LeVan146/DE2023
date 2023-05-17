@@ -1,0 +1,60 @@
+gcloud dataproc jobs submit pyspark \
+    --cluster=van-de23-cluster \
+    --region=us-central1 \
+    --jars=gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar \
+    gs://van_de2023/project/spark_job.py \
+    -- \
+        --input_0="inventory_sets" \
+        --input_1="set" \
+        --input_2="themes"
+
+python prefect/upload_to_GCS.py \
+    --url_0="https://cdn.rebrickable.com/media/downloads/inventory_sets.csv.gz?1682147607.450634" \
+    --url_1="https://cdn.rebrickable.com/media/downloads/sets.csv.gz?1682147600.4386284" \
+    --url_2="https://cdn.rebrickable.com/media/downloads/themes.csv.gz?1683011566.062824" \
+    --data_name_0="inventory_sets" \
+    --data_name_1="sets" \
+    --data_name_2="themes"
+
+python prefect/transfer_gcs_to_bq.py \
+    --data_name_0="inventory_sets" \
+    --data_name_1="sets" \
+    --data_name_2="themes"
+
+
+prefect deployment run etl-web-to-gcs/project-docker-flow \
+    -p 'urls=["https://cdn.rebrickable.com/media/downloads/inventory_sets.csv.gz?1682147607.450634",
+        "https://cdn.rebrickable.com/media/downloads/sets.csv.gz?1682147600.4386284",
+        "https://cdn.rebrickable.com/media/downloads/themes.csv.gz?1683011566.062824"]' \
+    -p 'data_names=["inventory_sets","sets","themes"]'
+
+prefect deployment run transfer-gcs-to-bq/etl-gcs-to-bg \
+    -p 'data_names=["inventory_sets","sets","themes"]'
+
+terraform plan \
+    -var="project_name=your_gcp_project_id" \
+    -var="region=your_region" \
+    -var="bucket_name=your_gcs_bucket_name" \
+    -var="storage_class=your_storage_class" \
+    -var="bq_dataset_name=your_bq_dataset_name" \
+
+terraform apply \
+    -var="project_name=your_gcp_project_id" \
+    -var="region=your_region" \
+    -var="bucket_name=your_gcs_bucket_name" \
+    -var="storage_class=your_storage_class" \
+    -var="bq_dataset_name=your_bq_dataset_name"
+
+terraform apply \
+    -var="project_name=vande2023" \
+    -var="region=us-central1" \
+    -var="bucket_name=van_de2023" \
+    -var="storage_class=STANDARD" \
+    -var="bq_dataset_name=vande2023_2"
+
+terraform plan \
+    -var="project_name=vande2023" \
+    -var="region=us-central1" \
+    -var="bucket_name=van_de2023" \
+    -var="storage_class=STANDARD" \
+    -var="bq_dataset_name=vande2023_2"
