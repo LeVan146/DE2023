@@ -229,34 +229,33 @@ Now you can check your table in BigQuery, the correct result should belike 2 fol
 - [x] Create dashboard in Looker with data from BigQuery
 
 ## Reviewing criteria  
-- Problem description – *The problem statement and project description is defined [here](#problem-description).*  
-    - [] 0 points: Problem is not described
-    - [x] 1 point: Problem is described but shortly or not clearly
-    - [] 2 points: Problem is well described and it's clear what the problem the project solves    
-- Cloud – *<span style="color:lightskyblue">G</span><span style="color:orangered">o</span><span style="color:gold">o</span><span style="color:lightskyblue">g</span><span style="color:yellowgreen">l</span><span style="color:orangered">e</span> cloud is used for data lake/warehouse and <span style="color:magenta">Terraform</span> as IaC.*
-    - [] 0 points: Cloud is not used, things run only locally
-    - [] 2 points: The project is developed in the cloud
-    - [x] 4 points: The project is developed in the cloud and IaC tools are used  
-- Data ingestion (choose either batch or stream) - Batch / Workflow orchestration – *Batch processing of end-to-end pipeline with tasks/flows defined in <span style="color:darkorange">Pyspark</span> and using orchestration on <span style="color:cyan">Prefect</span>.*
-    - [] 0 points: No workflow orchestration
-    - [] 2 points: Partial workflow orchestration: some steps are orchestrated, some run manually
-    - [x] 4 points: End-to-end pipeline: multiple steps in the DAG, uploading data to data lake
+- Problem description – *The problem statement and project description is defined [here](#problem-description).*  \
+[] 0 points: Problem is not described \
+[] 1 point: Problem is described but shortly or not clearly \
+[x] 2 points: Problem is well described and it's clear what the problem the project solves    
+- Cloud – *<span style="color:lightskyblue">G</span><span style="color:orangered">o</span><span style="color:gold">o</span><span style="color:lightskyblue">g</span><span style="color:yellowgreen">l</span><span style="color:orangered">e</span> cloud is used for data lake/warehouse and <span style="color:magenta">Terraform</span> as IaC.* \
+[] 0 points: Cloud is not used, things run only locally \
+[] 2 points: The project is developed in the cloud \
+[x] 4 points: The project is developed in the cloud and IaC tools are used  
+- Data ingestion (choose either batch or stream) - Batch / Workflow orchestration – *Batch processing of end-to-end pipeline with tasks/flows defined in <span style="color:darkorange">Pyspark</span> and using orchestration on <span style="color:cyan">Prefect</span>.* \
+[] 0 points: No workflow orchestration \
+[] 2 points: Partial workflow orchestration: some steps are orchestrated, some run manually \
+[x] 4 points: End-to-end pipeline: multiple steps in the DAG, uploading data to data lake
 - Data warehouse – *<span style="color:lightskyblue">BigQuery</span> used to store transformed table. Each final table have partition by date and cluster by theme id * \
-<sub> The partition and cluster here is for demonstration </sub>
-
-    - [] 0 points: No DWH is used
-    - [] 2 points: Tables are created in DWH, but not optimized
-    - [x] 4 points: Tables are partitioned and clustered in a way that makes sense for the upstream queries (with explanation)
-- Transformations (dbt, spark, etc) – *<span style="color:darkorange">Pyspark</span> is used for data transformations.*
-    - [] 0 points: No transformations
-    - [] 2 points: Simple SQL transformation (no dbt or similar tools)
-    - [x] 4 points: Transformations are defined with dbt, Spark or similar technologies
-- Dashboard – *Dashboard is created with <span style="color:lightskyblue">Looker (Data studio)</span>. 3 charts/tiles created.*
-    - [] 0 points: No dashboard
-    - [] 2 points: A dashboard with 1 tile
-    - [x] 4 points: A dashboard with 2 tiles
-- Reproducibility – *Instructions are write indetail, include example. Each step contain step-by-step to follow*
-    - [] 0 points: No instructions how to run code at all
-    - [] 2 points: Some instructions are there, but they are not complete
-    - [x] 4 points: Instructions are clear, it's easy to run the code, and the code works
+<sub> The partition and cluster here is for demonstration </sub> \
+[] 0 points: No DWH is used \
+[] 2 points: Tables are created in DWH, but not optimized \
+[x] 4 points: Tables are partitioned and clustered in a way that makes sense for the upstream queries (with explanation)
+- Transformations (dbt, spark, etc) – *<span style="color:darkorange">Pyspark</span> is used for data transformations.* \
+[] 0 points: No transformations \
+[] 2 points: Simple SQL transformation (no dbt or similar tools) \
+[x] 4 points: Transformations are defined with dbt, Spark or similar technologies
+- Dashboard – *Dashboard is created with <span style="color:lightskyblue">Looker (Data studio)</span>. 3 charts/tiles created.* \
+[] 0 points: No dashboard \
+[] 2 points: A dashboard with 1 tile \
+[x] 4 points: A dashboard with 2 tiles 
+- Reproducibility – *Instructions are write indetail, include example. Each step contain step-by-step to follow* \
+[] 0 points: No instructions how to run code at all \
+[] 2 points: Some instructions are there, but they are not complete \
+[x] 4 points: Instructions are clear, it's easy to run the code, and the code works
 
