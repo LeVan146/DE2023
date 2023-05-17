@@ -1,0 +1,47 @@
+###
+### A complete description of a Prefect Deployment for flow 'from_BQ_to_BQ'
+###
+name: from_bq_to_bq
+description: The main ETL function
+version: da883c34b61ed7f055e2506eb8895b15
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {
+"data_names": [
+    "inventory_sets", 
+    "sets", 
+    "themes"
+]
+}
+schedule: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: from_BQ_to_BQ
+manifest_path: null
+storage: null
+path: /Users/lap02105/workking_space/DE_Zoomcamp_2023/project
+entrypoint: source/spark_job.py:from_bq_to_bq
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    data_names:
+      title: data_names
+      position: 0
+  required:
+  - data_names
+  definitions: null
