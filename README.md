@@ -2,9 +2,9 @@
 ![Dashboard Screenshot](assets/Lego_System.webp)
 
 ## Problem description
-LEGO is a Danish toy production company over 90 years old, from 1932. With a large retail system overworld, stackholders need a nearly real-time dashboard to tracking the flow of products to insure that all toys are deliveried to the right person. 
+LEGO is a Danish toy production company over 90 years old, from 1932. With a large retail system overworld, stakeholders need a nearly real-time dashboard to track the flow of products to ensure that all toys are delivered to the right person. 
 
-Since the retailer system are spread all the world, we need an end-to-end automated pipeline to pull data from each store website, aggregate them into meaningful information to help stackholder to keep up with the status of each store and season, and the pipeline should update regular in day to make sure stackholder not missing any situation in each store.
+Since the retailer system are spread all over the world, we need an end-to-end automated pipeline to pull data from each store website, aggregate them into meaningful information to help stakeholders to keep up with the status of each store and season, and the pipeline should update regularly in day to make sure stakeholder not missing any situation in each store.
 
 
 ## Technologies:
@@ -19,12 +19,12 @@ Since the retailer system are spread all the world, we need an end-to-end automa
 
 ![Project Architecture](assets/architecture.svg)
 
-- LEGO data is avaiable at [Rebrickable](https://rebrickable.com/downloads/)
+- LEGO data is available at [Rebrickable](https://rebrickable.com/downloads/)
 - The whole process is orchestrated by Prefect and Docker.
-- Data is download directly from website to Google Cloud bucket, it's also can download to local server (optional) for backup purpose.
-- Then, the data will transfer from GC bucket to BQ by Prefect as well, this process will make sure we can access raw data in BQ.
-- After that, Pyspark in Google Cloud Compute will pickup the data in BQ, perform transform and put clean and aggregate data as tabular data in BigQuery. Since the tranformation in big data can take a lot of time for some tools, so Pyspark can be used here to speedup the process.
-- And final step, Looker (Data Studio) load the data from BigQuery to visualize it as charts
+- Data is downloaded directly from the website to the Google Cloud bucket, it's also can download to a local server (optional) for backup purposes.
+- Then, the data will transfer from the GC bucket to BQ by Prefect as well, this process will make sure we can access raw data in BQ.
+- After that, Pyspark in Google Cloud Compute will pick up the data in BQ, perform transform, and put clean and aggregate data as tabular data in BigQuery. Since the transformation in big data can take a lot of time for some tools, Pyspark can be used here to speed up the process.
+- And the final step, Looker (Data Studio) load the data from BigQuery to visualize it as charts
 ## Step-by-step
 
 ### Step 0: Clone this repository to you computer:
@@ -216,9 +216,9 @@ Now you can check your table in BigQuery, the correct result should belike 2 fol
 
 - My dashboard available at [link](https://lookerstudio.google.com/reporting/a6bdfbe6-3bf5-4e65-a500-381e91d70d1c)
 
-- For the chart in bottom left, as you can see 2003, the number of LEGO set decreate caused by (Great Recession)[https://en.wikipedia.org/wiki/Great_Recession], and it happend again in 2023. Despite the peak of LEGO in 2022. Due to the COVID, everyone need to stay at home, so they buy more LEGO to make them enjoy the long time inside their house.
+- For the chart in the bottom left, as you can see 2003, the number of LEGO sets decreased caused to (The Great Recession)[https://en.wikipedia.org/wiki/Great_Recession], and it happens again in 2023. Despite the peak of LEGO in 2022. Due to COVID, everyone needs to stay at home, so they buy more LEGO to make them enjoy a long time inside their house.
 
-- Move to the Most popular set chart, the Minifigures theme dominated top 10 of the table, I think the reason here because everyone want to have the LEGO collection, but others themes are out of their budget, so the Minifigures become their top choose. And 1 more reason like small LEGO size, we can decorate it all the place we want.
+- Move to the Most popular set chart, the Minifigures theme dominated the top 10 of the table, I think the reason here is that everyone wants to have the LEGO collection, but other themes are out of their budget, so the Minifigures become their top choice. And 1 more reason like the small LEGO size, we can decorate it all the place we want.
 ## Planning
 - [x] Use Terraform as IaC
 - [x] Download data from url to GCS (as datalake) with Prefect
